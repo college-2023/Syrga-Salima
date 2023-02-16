@@ -1,0 +1,44 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+  <title>Log In</title>
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <div class="left">  </div>
+  <div class="form">
+  
+    <form action="{% url 'loginUser' %}"  method="POST" >
+      {% csrf_token %}
+
+      <h1>Sign In</h1>
+		<div class="input-form">
+			<input type="text" name="username" placeholder="username">
+		</div>
+		<div class="input-form">
+			<input type="password" name="password"  placeholder="password">
+		</div>
+		<div class="input-form">
+			<input type="submit" value="Sign In">
+		</div>
+		<a href="{% url 'registerUser' %}" class="forget">Dont have an account ?</a>
+
+  </form>
+</div>
+<div id="hint"> 
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+      {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+
+</body>
+</html>
