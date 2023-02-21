@@ -1,34 +1,143 @@
-
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% load static %}
-  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
-  <title>Log In</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+  <title>Log In </title>
 </head>
 <body>
+  <style>
+    h4{
+      margin-top: 40px;
+      width: 360px;
+      height: 18px;
+
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 200;
+      font-size: 15px;
+      line-height: 18px;
+      text-align: center;
+
+      color: #373737;
+    }
+      .line{
+    width: 338px;
+    height: 0px;
+
+    border: 1px solid #8B5D27;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 7;
+    flex-grow: 0;
+    margin-top: 30px;
+  }
+  .log{
+    display: flex;
+    flex-direction: column;
+  }
+  .icons{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    justify-content: space-evenly;
+  }
+.one{
+  background-image: url(https://github.com/csc2023/Syrga-Salima/blob/main/img/facebook_.png?raw=true);
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+}
+.two{
+  background-image: url(https://github.com/csc2023/Syrga-Salima/blob/main/img/Google.png?raw=true);
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+}
+.three{
+  background-image: url(https://github.com/csc2023/Syrga-Salima/blob/main/img/apple.png?raw=true);
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+}
+.with{
+  margin-top: 30px;
+  width: 360px;
+  height: 18px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+
+  color: #373737;
+
+
+}
+a #reg{
+
+width: 158px;
+height: 18px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+line-height: 18px;
+
+color: #2C2C2C;
+
+
+}
+  </style>
   {% include 'navbar.html' %}
-  <div class="left">  </div>
+  <div class="container">
+  <div class="left">
+  <div class="logo"><span>chocoloco</span></div>
+  </div>
+  <div class="right">
   <div class="form">
   
     <form action="{% url 'loginUser' %}"  method="POST" >
       {% csrf_token %}
-
-      <h1>Sign In</h1>
+      
+      <h1>Вход</h1>
 		<div class="input-form">
-			<input type="text" name="username" placeholder="username">
+      <h2>email</h2>
+			<input type="text" name="username" placeholder="введите e-mail">
 		</div>
 		<div class="input-form">
-			<input type="password" name="password"  placeholder="password">
+      <h2>пароль</h2>
+			<input type="password" name="password"  placeholder="введите пароль">
 		</div>
 		<div class="input-form">
-			<input type="submit" value="Sign In">
-		</div>
-		<a href="{% url 'registerUser' %}" class="forget">Dont have an account ?</a>
+      <input type="submit" value="Sign In" onclick="lsRememberMe()">
+  </div>
+  <input type="checkbox" value="lsRememberMe" id="rememberMe">
+   <label for="rememberMe">Запомнить меня?</label>
+   <p><a href="{% url 'registerUser' %}" class="forget">Забыли пароль?</a></p>
+   <div class="line"></div>
+   <div class="log">
+    <div class="with">Войти с помощью</div>
+    <div class="icons">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+    </div>
+   </div>
+   <div class="reg">
+    <h4>нет аккаунта?</h4>
+    <a href="{% url 'registerUser' %}" class="reg">Зарегистрироваться</a>
+   </div>
 
   </form>
+</div>
 </div>
 <div id="hint"> 
   {% if messages %}
@@ -39,6 +148,30 @@
   </ul>
   {% endif %}
 </div>
+  </div>
 
 </body>
+<script>
+  const rmCheck = document.getElementById("rememberMe"),
+  emailInput = document.getElementById("email");
+
+if (localStorage.checkbox && localStorage.checkbox !== "") {
+rmCheck.setAttribute("checked", "checked");
+emailInput.value = localStorage.username;
+} else {
+rmCheck.removeAttribute("checked");
+emailInput.value = "";
+}
+
+function lsRememberMe() {
+if (rmCheck.checked && emailInput.value !== "") {
+  localStorage.username = emailInput.value;
+  localStorage.checkbox = rmCheck.value;
+} else {
+  localStorage.username = "";
+  localStorage.checkbox = "";
+}
+}
+</script>
+
 </html>
