@@ -54,3 +54,6 @@ def registerUser(request):
             messages.error(request, 'Error')
     return render(request, 'register.html', context)
 
+
+def main(request):
+    return render(request, 'index.html')
