@@ -1,0 +1,376 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'style/main.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Main Page</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+  <div class="main_page">
+    
+    {% if messages %}
+   
+        {% for message in messages %}
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    
+    {% endif %}
+    <div class="navbar">
+      <h2>chocoloco</h2>
+      
+    <div class="search">
+      <form role="search" id="form">
+        <input type="search" id="query" name="q"
+         placeholder="Поиск"
+         aria-label="Search through site content">
+        <button>
+          <svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+        </button>
+      </form>
+    </div>
+    <i style="font-size:24px; color: #52341E;" class="fa">&#xf095;</i>
+    <div class="contact">
+      <h3>Контакты: </h3>
+      <h3>+996700123456</h3>
+    </div>
+    <i style="font-size:24px ; color: #52341E;" class="fa">&#xf08a;</i>
+    <i style="font-size:24px; color: #52341E;" class="fa">&#xf2be;</i>
+    <div class="box">
+      <h1>Корзина</h1>
+      <div class="line"></div>
+      <div class="circle"> <span>2</span></div>
+    </div>
+    {% if request.user.is_authenticated %}
+    <a id="navbar_a" href="{% url 'logoutUser' %}"> Logout</a>
+    {% else %}
+    <a id="navbar_a" href="{% url 'loginUser' %}">Login</a>
+    {% endif %}
+    </div>
+    <div class="main">
+
+    </div>
+    <div class="main2">
+      <a href="#" >Bovetti</a>
+      <a href="#" id="a2">Leonidas</a>
+      <a href="#" id="a2">Lindt</a>
+      <a href="#" id="a2">Michel Cluizel</a>
+      <a href="#" id="a2">Toblerone</a>
+  
+    </div>
+    <div class="main3">
+      <h5>НАЧИНАЕТСЯ ДРУГАЯ СТРАНИЦА</h5>
+  </div>
+  </div>
+  <div class="footer">
+    <div class="lines">
+        <div class="foot_text">
+          <a href="#" class="foot1">Компания</a>
+          <a href="#" class="foot">О компания</a>
+          <a href="#" class="foot">Новости</a>
+          <a href="#" class="foot">Магазины</a>
+        </div>
+
+        <div class="foot_text">
+          <a href="#" class="foot1">Информация</a>
+          <a href="#" class="foot">Условия оплаты</a>
+          <a href="#" class="foot">Условия доставки</a>
+          <a href="#" class="foot">Гарантия</a>
+        </div>
+
+        <div class="foot_text">
+          <a href="#" class="foot1">Каталог</a>
+          <a href="#" class="foot">Toblerone</a>
+          <a href="#" class="foot">Bovetti</a>
+          <a href="#" class="foot">Leonidas</a>
+          <a href="#" class="foot">lindt</a>
+          <a href="#" class="foot">Mishel</a>
+        </div>
+
+
+        <div class="foot_text">
+          <a href="#" class="foot1">Наши контакты</a>
+          <a href="#" class="foot">
+            <i style="font-size:24px" class="fa">&#xf095;</i>+996700123456
+          </a>
+          <a href="#" class="foot">
+            <i style="font-size:24px" class="fa">&#xf2b7;</i>chocoloco@gmail.com
+          </a>
+          <a href="#" class="foot">
+          <i class="material-icons">&#xe0c8;</i>Кыргызстан,Бишкек
+
+          </a>
+
+      </div>
+    </div>
+  </div>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+  .main_page{
+    width: auto;
+    height: auto;
+  }
+  .navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 101px 10px 102px;
+    gap: 40px;
+    background: #FFFAF0;
+    box-shadow: 0px 30px 60px rgba(34, 31, 32, 0.2);
+  }
+ 
+  h2{
+    font-family: 'Dancing Script';
+    font-style: normal;
+  font-weight: 700;
+  font-size: 28.4732px;
+  line-height: 34px;
+
+  /* шоколад */
+
+  color: #52341E;
+  }
+  form {
+  background-color: #FFFAF0;
+  border: 1px solid #52341E;
+  border-radius: 22px;
+  width: 384px;
+  height: 38px;
+  display: flex;
+  flex-direction: row ;
+}
+input {
+  margin-left: 2%;
+  all: unset;
+  font: 16px system-ui;
+  color: #52341E;
+  height: 100%;
+  width: 100%;
+  margin-left: 10px;
+}
+
+input::placeholder {
+  opacity: 0.7; 
+  color: #6D6D6D;
+}
+button {
+  all: unset;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+}
+
+svg {
+  color: #52341E;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+}
+input[type="search"]{
+  color: #52341E;
+}
+.contact{
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+}
+h3{
+
+  width: 136px;
+  height: 40px;
+
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  /* or 133% */
+
+
+  color: #52341E;
+
+}
+.box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 13px 0px 0px;
+  gap: 13px;
+
+  width: 154.26px;
+  height: 38px;
+
+  background: #FFFAF0;
+  /* шоколад */
+
+  border: 1px solid #52341E;
+  border-radius: 45px;
+}
+h1{
+  width: 61px;
+  height: 18px;
+
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  /* identical to box height */
+
+
+  color: #52341E;
+  margin-left: 10%;
+}
+.line{
+  width: 38px;
+  height: 0px;
+
+  border: 1.09396px solid #52341E;
+  transform: rotate(90deg);
+}
+.circle{
+  width: 26.26px;
+  height: 26.26px;
+  background: #52341E;
+  border-radius: 50%;
+  display: inline-block;
+}
+span{
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14.9653px;
+  line-height: 18px;
+  /* identical to box height */
+
+
+  color: #FFFAF0;
+  margin-left: 29%;
+}
+.main{
+  background: #D9D9D9;
+  width: auto;
+  height: 387px;
+}
+.main2{
+  background: #FFFAF0;
+  height: 60px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+a{
+  margin-top: 20px;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 125.4%;
+  /* identical to box height, or 23px */
+  position: relative;
+  letter-spacing: 0.08em;
+
+  /* шоколад */
+  text-decoration: none;
+  color: #52341E;
+}
+a::after{
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: #52341E;
+  position: absolute;
+  bottom: -5px;
+  left: 0px;
+  transform: scaleX(0);
+  transition: all .3s ease-out;
+}
+a:hover::after{
+  transform: scaleX(1);
+}
+.main3{
+  background-color: white;
+  width: auto;
+  height: 100vh;
+}
+h5{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  font-family: 'Raleway';
+font-style: normal;
+font-weight: 800;
+font-size: 40px;
+line-height: 47px;
+/* identical to box height */
+
+
+color: #000000;
+}
+.footer{
+  background-color: #100803;
+  width: 100%;
+  min-height: 360px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+}
+.lines{
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.foot_text{
+  display: flex;
+  flex-direction: column;
+  margin-top: 29p;
+  justify-content: space-between;
+  column-gap: 30px;
+  flex-wrap: nowrap;
+  border-top: 3px solid #fff;
+}
+.foot{
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  margin-top: 20px  ;
+  font-family: 'Inter';
+  font-style:normal ;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #FFFAF0;
+  column-gap: 30px;
+}
+.foot1{
+  display: flex;
+  flex-wrap: nowrap;
+  font-family: 'Inter';
+  font-style:normal ;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #FFFAF0;
+  white-space: nowrap;
+  
+}
+</style>
+</body>
+</html>
