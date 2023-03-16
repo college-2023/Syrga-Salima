@@ -1,0 +1,12 @@
+#navbar_a{
+    color: grey;
+    font-size: 60px ;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+}
+.main{
+    background-image: url(https://github.com/csc2023/Syrga-Salima/blob/main/img/choco%20loco.png?raw=true);
+}
