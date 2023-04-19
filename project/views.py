@@ -57,3 +57,18 @@ def registerUser(request):
 
 def main(request):
     return render(request, 'index.html')
+
+def bov(request):
+    return render(request, 'bov.html')
+
+def tob(request):
+    return render(request, 'tob.html')
+
+def leo(request):
+    return render(request, 'leo.html')
+
+def lin(request):
+    return render(request, 'lin.html')
+
+def mic(request):
+    return render(request, 'mic.html')
